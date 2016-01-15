@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <title>中華民國國旗</title>
+</head>
+
+<body>
+  <canvas id="myCanvas" width="300" height="200">
+    你的瀏覽器不支援Canvas標籤, 請改用Chrome,Opera,Firefox,IE9或Safari
+  </canvas>
+  <script type="text/javascript">
+  var canvas = document.getElementById('myCanvas');
+  var flag = canvas.getContext('2d');
+  var flag_w = canvas.width;
+  var flag_h = canvas.height;
+  var circle_x = flag_w / 4;
+  var circle_y = flag_h / 4;
+  //滿地紅
+  flag.fillStyle = 'rgb(254, 0, 0)';
+  flag.fillRect(0, 0, flag_w, flag_h);
+  //青天
+  flag.fillStyle = 'rgb(0, 0, 149)';
+  flag.fillRect(0, 0, flag_w / 2, flag_h / 2);
+  //白日:星芒
+  flag.beginPath();
+  var star_radius = flag_w / 8;
+  var angle = 0;
+  for (var i = 0; i < 24; i++) { //12道星芒,24條線
+    angle += 5 * Math.PI * 2 / 12;
+    var toX = circle_x + Math.cos(angle) * star_radius;
+    var toY = circle_y + Math.sin(angle) * star_radius;
+    if (i) flag.lineTo(toX, toY);
+    else flag.moveTo(toX, toY);
+  }
+  flag.closePath(); //可忽略
+  flag.fillStyle = '#fff';
+  flag.fill();
+  //白日:藍圈
+  flag.beginPath();
+  flag.arc(circle_x, circle_y, flag_w * 17 / 240, 0, Math.PI * 2, true);
+  flag.closePath();
+  flag.fillStyle = 'rgb(0, 0, 149)';
+  flag.fill();
+  //白日:白心
+  flag.beginPath();
+  flag.arc(circle_x, circle_y, flag_w / 16, 0, Math.PI * 2, true);
+  flag.closePath();
+  flag.fillStyle = '#fff';
+  flag.fill();
+  </script>
+</body>
+</html>

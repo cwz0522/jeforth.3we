@@ -5,7 +5,9 @@
 				
 	js> typeof(jQuery)=="undefined" [if]
 		char script createElement ( -- eleScript )
-		dup char src char js/jquery-1.11.2.js setAttribute ( -- eleScript )
+		\ dup char src char js/jquery-1.11.2.js setAttribute ( -- eleScript )
+		dup char src char js/jquery-2.1.4.min.js setAttribute ( -- eleScript )
+		
 		js> document.getElementsByTagName('head')[0] swap ( -- eleHead eleScript ) appendChild
 
 		<js>
